@@ -1,0 +1,13 @@
+Time::DATE_FORMATS[:time_format] = '%l:%M %p' # 9:22 AM
+Time::DATE_FORMATS[:day_format] = '%A' # Friday
+Time::DATE_FORMATS[:day_number_format] = '%e' # 17
+Time::DATE_FORMATS[:date_format] = '%b %e' # May 17
+Time::DATE_FORMATS[:abbr_day_and_date_format] = '%a, %b %e' # Fri, May 17
+Time::DATE_FORMATS[:abbr_day_and_time_no_year_format] = '%a, %b %e, %l:%M %p'
+Time::DATE_FORMATS[:full_date_format] = '%b %e, %Y' # May 17, 2019
+Time::DATE_FORMATS[:day_and_time_format] = '%A: %B, %d %Y, %l:%M %p' # Friday: May, 17 2019, 9:22 AM
+Time::DATE_FORMATS[:abbr_day_and_time_format] = '%a, %b %d, %Y, %l:%M %p' # Fri, May 17, 2019, 9:22 AM
+Time::DATE_FORMATS[:short_day_date_time_format] = '%a • %m/%d/%y • %l:%M %p' # Fri • 10/7/20 • 11:45am
+Time::DATE_FORMATS[:short_day_and_time_format] = '%F, %I:%M%p' # 2019-05-17, 09:22AM
+Time::DATE_FORMATS[:short_day_and_year_format] = '%F' # 2019-05-17
+Time::DATE_FORMATS[:export_datetime_format] = '%FT%H%M' # 2019-05-17T0922

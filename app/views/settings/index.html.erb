@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-xl-12">
+    <header>
+      <h3>
+        <i class='fas fa-cog fa-fw'></i>
+        Settings
+      </h3>
+    </header>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Tab Navigation -->
+  <section id="nav-settings-menu" class="col-xl-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" href="#company-panel" id="company-tab" role="tab" data-toggle="pill" aria-controls="company" aria-selected="true">Company</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <div class="col-xl-9">
+    <section class="tab-content" id="nav-content">
+      <div role="tabpanel" class="tab-pane fade show active" id="company-panel" aria-labelledby="company-tab">
+        <div class="card shadow-sm">
+          <div class="card-header">
+            Company
+            <div id='remote_container'></div>
+          </div>
+          <% if @company_branding.present? %>
+            <div class="card-body">
+              <ol class="list-group list-group-flush list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Name</div>
+                    <%= @company_branding.name %>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Brand</div>
+                    <%= @company_branding.brand %>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Title</div>
+                    <%= @company_branding.title %>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Welcome Page Heading</div>
+                    <%= @company_branding.welcome_page_heading %>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Welcome Page Subheading</div>
+                    <%= @company_branding.welcome_page_subheading %>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <% if current_user.superadmin? || current_user.supervisor? || current_user.manager? %>
+              <div class="card-footer">
+                <div class="float-end">
+                  <%= link_to 'Edit', edit_company_path(@company_branding), class: 'btn btn-primary', remote: true %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="card-body">
+              <div class="text-center">
+                <h5 class="card-title">Company details haven't been configured</h5>
+                <% if current_user.superadmin? || current_user.supervisor? || current_user.manager? %>
+                  <%= link_to 'Set Up', new_company_path, class: 'btn btn-primary', remote: true %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

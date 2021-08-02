@@ -1,0 +1,7 @@
+<% flash.each do |type, message| %>
+  <% next unless message.is_a? String %>
+  <div class="<%= bootstrap_class_for(type) %>" role="alert" data-bs-dismiss="alert">
+    <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+    <%= message %>
+  </div>
+<% end %>

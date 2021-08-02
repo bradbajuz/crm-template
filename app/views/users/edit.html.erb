@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-sm-12">
+    <header>
+      <h3>
+        <i class="fas fa-user fa-fw"></i>
+        Edit <%= @user.name %>
+      </h3>
+    </header>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <article class="card shadow-sm">
+      <div class="card-header">
+        <%= link_to 'javascript:history.back()', class: 'float-end' do %>
+          <button type="button" class="btn-close"></button>
+        <% end %>
+        User Information
+      </div>
+      <section class="card-body">
+
+        <%= form_for @user, html: { id: 'user_form', class: 'row g-3' } do |f| %>
+          <%= user_error_messages! %>
+          <div class="col-12">
+            <%= f.label :name, class: 'form-label' %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          </div>
+
+          <div class="col-12">
+            <%= f.label :email, class: 'form-label' %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+
+          <div class="col-12">
+            <%= f.label 'New password', class: 'form-label' %>
+            <% if @minimum_password_length %>
+              <small class="text-danger">
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              </small>
+            <% end %>
+            <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+          </div>
+
+          <div class="col-12">
+            <%= f.label 'Verify password', class: 'form-label' %>
+            <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
+          </div>
+
+          <% if current_user.superadmin? || current_user.supervisor? %>
+            <div class="col-md-2">
+              <%= f.label 'Role', class: 'form-label' %>
+              <%= f.select(:role, options_for_select([['supervisor'], ['manager'], ['tech'], ['unassigned'], ['disabled']], f.object.role), {}, { class: 'form-select' }) %>
+            </div>
+          <% elsif current_user.manager? %>
+            <div class="col-md-2">
+              <%= f.label 'Role', class: 'form-label' %>
+              <%= f.select(:role, options_for_select([['manager'], ['tech'], ['unassigned'], ['disabled']], f.object.role), {}, { class: 'form-select' }) %>
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+      <footer class="card-footer">
+        <% if current_user.superadmin? %>
+          <%= link_to @user, data: { confirm: 'Are you sure?' }, method: :delete do %>
+            <button class="btn btn-danger">
+              <i class="fas fa-trash-alt fa-fw"></i>
+            </button>
+          <% end %>
+        <% end %>
+        <div class="float-end">
+          <%= link_to 'javascript:history.back()' do %>
+            <button class="btn btn-outline-secondary">Cancel</button>
+          <% end %>
+          <button type="submit" class="btn btn-primary" aria-hidden="true" form="user_form">Save</button>
+        </div>
+      </footer>
+    </article>
+  </div>
+</div>

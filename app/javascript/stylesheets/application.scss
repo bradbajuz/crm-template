@@ -1,0 +1,139 @@
+$FontPathOpenSans: "~open-sans-fonts/open-sans";
+@import "~open-sans-fonts/open-sans-regular";
+
+$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+@import "~bootstrap/scss/bootstrap";
+@import "~flatpickr/dist/flatpickr";
+
+html {
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity)) !important;
+}
+
+body {
+  //text-rendering: optimizeLegibility;
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity)) !important;
+  //position: relative;
+  padding-top: 70px;
+}
+
+h1 {
+  color: #333333;
+}
+
+h2 {
+  color: #333333;
+}
+
+h3 {
+  color: #333333;
+}
+
+h4 {
+  color: #333333;
+}
+
+h5 {
+  color: #333333;
+}
+
+h6 {
+  color: #333333;
+}
+
+p {
+  color: #333333;
+}
+
+strong {
+  color: #333333;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.pagy-bootstrap-nav {
+  @extend .d-flex, .pagination, .pagination-sm, .justify-content-center;
+}
+
+.jumbotron {
+  background: white;
+}
+
+.default-card {
+  position: relative;
+  //min-height: 100px;
+  text-align: left;
+  -webkit-transition: background, 0.1s;
+  -moz-transition: background, 0.1s;
+  transition: background, 0.1s;
+  display: block;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.default-card:hover {
+  background: #f7f7fa;
+}
+
+// DEFAULT CONFIG
+$initials-roundness: 50% !default;
+$initials-font: monospace, 'Courier New', Courier !default;
+$initials-weight: bold !default;
+$initials-font-size: 0.6 !default; // Scale font size. 1 is base
+$initials-line-height: 1 !default; // Adjust vertical alignment. 1 is base
+$initials-size-base: 50px !default;
+
+@mixin avatar($size: $initials-size-base) {
+  width: $size;
+  height: $size;
+  overflow: hidden;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: $initials-roundness;
+  -webkit-border-radius: $initials-roundness;
+  -moz-border-radius: $initials-roundness;
+
+  .initials {
+    font-size: $size * $initials-font-size;
+    line-height: $size * $initials-line-height;
+    color: #fff;
+    font-family: $initials-font;
+    font-weight: $initials-weight;
+  }
+}
+
+.avatar-circle {
+  @include avatar(75px);
+}
+
+.avatar-circle-xs {
+  @include avatar(25px);
+}
+
+.avatar-circle-sm {
+  @include avatar(35px);
+}
+
+.avatar-circle-lg {
+  @include avatar(100px);
+}
+
+// Used to shrink nav text and avatar on smaller screens
+@media (max-width: 576px) {
+  .nav-link {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .avatar-circle-sm {
+    @include avatar(25px);
+  }
+}
+
